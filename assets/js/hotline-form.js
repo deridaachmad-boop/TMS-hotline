@@ -13,12 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);
+    const unit = String(data.get('unit') || '').trim();
     const message = String(data.get('message') || '').trim();
-    if (!message) { showStatus('Pesan belum diisi.', false); return; }
+    if (!unit) {
+      showStatus('Bagian / Unit Kerja wajib diisi.', false);
+      document.getElementById('f-unit').focus();
+      return;
+    }
+    if (!message) {
+      showStatus('Pesan wajib diisi.', false);
+      document.getElementById('f-message').focus();
+      return;
+    }
     const anon = !!data.get('anon');
     const body = new URLSearchParams({
       name: anon ? 'Anonim' : (String(data.get('name') || '').trim() || '-'),
-      unit: String(data.get('unit') || '').trim() || '-',
+      unit:  unit: unit,
       topic: String(data.get('topic') || 'Lainnya'),
       message: message,
       anon: anon ? 'Ya' : 'Tidak'
