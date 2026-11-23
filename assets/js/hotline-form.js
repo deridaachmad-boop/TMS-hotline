@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('hotline-form');
   if (!form) return;
+
   const HOTLINE_URL = 'https://script.google.com/macros/s/AKfycbzgpzkZmtJkDE_Q1IYR1cIyI5cdijHKQ1oYrFVV7jH3oF3sXkdSWg_H6YDjyplXv4_8pw/exec';
   const sendBtn = form.querySelector('button[type="submit"]');
   const statusEl = document.getElementById('hotline-status');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = new FormData(form);
     const unit = String(data.get('unit') || '').trim();
     const message = String(data.get('message') || '').trim();
+
     if (!unit) {
       showStatus('Bagian / Unit Kerja wajib diisi.', false);
       document.getElementById('f-unit').focus();
@@ -25,25 +27,30 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('f-message').focus();
       return;
     }
+
     const anon = !!data.get('anon');
     const body = new URLSearchParams({
       name: anon ? 'Anonim' : (String(data.get('name') || '').trim() || '-'),
-      unit:  unit: unit,
+      unit: unit,
       topic: String(data.get('topic') || 'Lainnya'),
       message: message,
       anon: anon ? 'Ya' : 'Tidak'
     });
+
     const oldText = sendBtn.textContent;
-    sendBtn.disabled = true; sendBtn.textContent = 'Mengirim...';
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Mengirim...';
     showStatus('', true);
     try {
       await fetch(HOTLINE_URL, { method: 'POST', mode: 'no-cors', body });
       form.reset();
       showStatus('Terkirim. Terima kasih, pesan Anda sudah diterima HRD.', true);
     } catch (err) {
+      console.error('Gagal mengirim hotline:', err);
       showStatus('Gagal mengirim. Periksa koneksi internet lalu coba lagi.', false);
     } finally {
-      sendBtn.disabled = false; sendBtn.textContent = oldText;
+      sendBtn.disabled = false;
+      sendBtn.textContent = oldText;
     }
   });
 });
