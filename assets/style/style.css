@@ -1,0 +1,105 @@
+/* Hotline PT TMS — gaya ringkas */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root{
+  --graphite-900:#0d1b3d;
+  --steel-400:#64748b;
+  --steel-300:#94a3b8;
+  --steel-200:#cbd5e1;
+  --paper-50:#f8fafc;
+  --paper-100:#eef2f7;
+  --ink-900:#0f172a;
+  --forge-500:#2456d9;
+  --forge-300:#89a9f5;
+  --forge-glow:rgba(36,86,217,.16);
+  --grad-blue:linear-gradient(135deg,#1e3a8a 0%,#2456d9 55%,#3b82f6 100%);
+  --ok-500:#16a34a;
+  --warn-500:#dc2626;
+  --f-display:'Plus Jakarta Sans',sans-serif;
+  --f-body:'Inter',sans-serif;
+  --f-mono:'IBM Plex Mono',monospace;
+  --maxw:1180px;
+  --radius-card:14px;
+  --shadow-card:0 10px 28px -14px rgba(13,27,61,.18);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:var(--f-body);color:var(--ink-900);background:var(--paper-50);-webkit-font-smoothing:antialiased;line-height:1.55;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:700;line-height:1.05;letter-spacing:.2px;}
+p{margin:0;}
+:focus-visible{outline:2px solid var(--forge-500);outline-offset:3px;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+section{padding:64px 0;}
+
+.bolt{width:10px;height:9px;background:currentColor;clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%);display:inline-block;flex:none;}
+.plate{background:#fff;border:1px solid var(--paper-100);border-radius:var(--radius-card);box-shadow:var(--shadow-card);}
+
+/* header (tanpa menu) */
+.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--paper-100);}
+.topbar-inner{display:flex;align-items:center;height:68px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-logo{height:32px;width:auto;}
+.brand-logo + .brand-text{padding-left:12px;border-left:1px solid var(--paper-100);}
+.brand-text{display:flex;flex-direction:column;line-height:1.15;}
+.brand-text span{font-size:10.5px;color:var(--steel-400);letter-spacing:1.2px;text-transform:uppercase;}
+
+/* judul halaman */
+.pagehero{
+  position:relative;overflow:hidden;color:#fff;padding:56px 0 40px;
+  background-color:var(--graphite-900);
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:34px 34px;background-position:center -1px;
+}
+.pagehero::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 700px 300px at 12% 0%,var(--forge-glow),transparent 70%);}
+.pagehero .wrap{position:relative;z-index:1;}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;letter-spacing:.6px;color:var(--forge-300);margin-bottom:14px;}
+.pagehero h1{font-size:clamp(34px,5.4vw,54px);max-width:14ch;}
+.lede{margin-top:14px;max-width:60ch;color:var(--steel-200);font-size:17px;}
+
+/* tombol */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 24px;font-family:var(--f-body);font-weight:600;font-size:14.5px;border:1px solid transparent;border-radius:999px;cursor:pointer;transition:filter .2s ease,transform .15s ease,opacity .2s ease;}
+.btn-primary{background:var(--grad-blue);color:#fff;box-shadow:0 8px 20px -8px rgba(36,86,217,.6);}
+.btn-primary:hover{filter:brightness(1.12);transform:translateY(-1px);}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+
+/* hotline */
+.hotline-grid{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border-radius:16px;}
+.hotline-info{padding:38px;border-right:1px solid var(--paper-100);}
+.hotline-info h3{font-size:22px;margin-bottom:16px;}
+.hotline-info > p{color:var(--steel-400);font-size:14.5px;margin-bottom:22px;}
+.info-row{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--paper-100);}
+.info-row:first-of-type{border-top:none;}
+.info-row .ico{color:var(--forge-500);flex:none;margin-top:2px;}
+.info-row .lbl{font-family:var(--f-mono);font-size:11px;color:var(--steel-400);letter-spacing:.4px;}
+.info-row .val{font-size:14.5px;font-weight:500;margin-top:2px;}
+.confid{margin-top:22px;padding:16px 18px;background:var(--paper-50);font-size:13.5px;color:var(--steel-400);border-left:3px solid var(--forge-500);border-radius:0 8px 8px 0;}
+
+.hotline-form{padding:38px;}
+.hotline-form h3{font-size:22px;margin-bottom:6px;}
+.hint{font-size:13.5px;color:var(--steel-400);margin-bottom:22px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-family:var(--f-mono);font-size:11.5px;color:var(--steel-400);margin-bottom:7px;letter-spacing:.3px;}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--steel-200);padding:11px 13px;font-family:var(--f-body);font-size:14.5px;background:#fff;color:var(--ink-900);border-radius:8px;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--forge-500);}
+.field textarea{resize:vertical;min-height:110px;}
+.check-row{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--steel-400);margin-bottom:20px;}
+.hotline-status{margin-top:14px;font-size:14px;font-weight:600;min-height:1.4em;}
+.hotline-status.ok{color:var(--ok-500);}
+.hotline-status.err{color:var(--warn-500);}
+
+/* footer */
+footer{background:var(--graphite-900);color:var(--steel-300);padding:30px 0;}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--steel-400);}
+
+@media (max-width:880px){
+  .hotline-grid{grid-template-columns:1fr;}
+  .hotline-info{border-right:none;border-bottom:1px solid var(--paper-100);}
+  section{padding:44px 0;}
+}
+@media (max-width:560px){
+  .hotline-info,.hotline-form{padding:26px 20px;}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.001ms !important;scroll-behavior:auto !important;}}
