@@ -60,10 +60,10 @@
             <label for="f-name">Nama (opsional bila anonim)</label>
             <input type="text" id="f-name" name="name" placeholder="Nama lengkap">
           </div>
-          <div class="field">
-            <label for="f-unit">Bagian / Unit Kerja</label>
-            <input type="text" id="f-unit" name="unit" placeholder="Contoh: Nut Product, QC, Produksi">
-          </div>
+<div class="field">
+  <label for="f-unit">Bagian / Unit Kerja <span class="req">*</span></label>
+  <input type="text" id="f-unit" name="unit" required maxlength="80" placeholder="Contoh: Nut Product, QC, Produksi">
+</div>
           <div class="field">
             <label for="f-topic">Topik</label>
             <select id="f-topic" name="topic">
@@ -74,10 +74,10 @@
               <option>Lainnya</option>
             </select>
           </div>
-          <div class="field">
-            <label for="f-message">Pesan</label>
-            <textarea id="f-message" name="message" placeholder="Sampaikan pertanyaan, keluhan, atau masukan Anda di sini..."></textarea>
-          </div>
+<div class="field">
+  <label for="f-message">Pesan <span class="req">*</span></label>
+  <textarea id="f-message" name="message" required placeholder="Sampaikan pertanyaan, keluhan, atau masukan Anda di sini..."></textarea>
+</div>
           <div class="check-row">
             <input type="checkbox" id="f-anon" name="anon">
             <label for="f-anon" style="margin:0;">Kirim sebagai anonim</label>
