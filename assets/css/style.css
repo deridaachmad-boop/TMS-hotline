@@ -103,3 +103,6 @@ footer{background:var(--graphite-900);color:var(--steel-300);padding:30px 0;}
   .hotline-info,.hotline-form{padding:26px 20px;}
 }
 @media (prefers-reduced-motion:reduce){*{transition-duration:.001ms !important;scroll-behavior:auto !important;}}
+
+.req{color:#dc2626;font-weight:700;}
+.field input:user-invalid,.field textarea:user-invalid{border-color:#dc2626;}
